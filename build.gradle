@@ -1,0 +1,47 @@
+plugins {
+    id "com.github.maiflai.scalatest" version "0.31"
+}
+
+apply plugin: 'java-library'
+apply plugin: 'application'
+apply plugin: 'scala'
+
+group 'co.copper'
+
+mainClassName = 'co.copper.test.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.typelevel:cats-effect_2.13:3.4.6'
+
+    //CONFIG LOADER
+    implementation 'lt.dvim.ciris-hocon:ciris-hocon_2.13:1.0.1'
+
+    //HTTP
+    implementation 'org.http4s:http4s-blaze-server_2.13:0.23.13'
+    implementation 'org.http4s:http4s-blaze-client_2.13:0.23.13'
+    implementation 'org.http4s:http4s-circe_2.13:0.23.18'
+    implementation 'com.softwaremill.sttp.tapir:tapir-http4s-server_2.13:1.2.8'
+    implementation 'com.softwaremill.sttp.tapir:tapir-json-circe_2.13:1.2.8'
+    implementation 'com.softwaremill.sttp.tapir:tapir-swagger-ui-bundle_2.13:1.2.8'
+
+    // POSTGRESQL
+    implementation 'org.tpolecat:doobie-postgres_2.13:1.0.0-RC2'
+    implementation 'org.tpolecat:doobie-hikari_2.13:1.0.0-RC2'
+    implementation 'org.flywaydb:flyway-core:9.14.1'
+
+    //LOGGING
+    implementation 'org.typelevel:log4cats-slf4j_2.13:2.5.0'
+    implementation 'ch.qos.logback:logback-classic:1.4.5'
+    implementation 'net.logstash.logback:logstash-logback-encoder:7.2'
+
+    //TESTS
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.scalatest:scalatest_2.13:3.2.15'
+    testImplementation 'org.scalatestplus:junit-4-13_2.13:3.2.15.0'
+    testImplementation 'com.vladsch.flexmark:flexmark-all:0.64.0'
+    testImplementation 'org.tpolecat:doobie-scalatest_2.13:1.0.0-RC2'
+}
